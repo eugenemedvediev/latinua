@@ -1,12 +1,20 @@
-val scala3Version = "3.1.0"
+import Dependencies.*
 
-lazy val root = project
-  .in(file("."))
+ThisBuild / organization := "nl.medvediev"
+ThisBuild / version := "0.1.0-SNAPSHOT"
+ThisBuild / scalaVersion := "3.1.0"
+
+lazy val core = project
+  .in(file("core"))
   .settings(
-    name := "latinua",
-    version := "0.1.0-SNAPSHOT",
-    scalaVersion := scala3Version,
-    mainClass := Some("nl.medvediev.latinua"),
-    // Test / mainClass := Some("nl.medvediev.latinua"),
-    libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
+    name := "core",
+    libraryDependencies ++= coreDeps
   )
+
+lazy val console = project
+  .in(file("console"))
+  .settings(
+    name := "console",
+    libraryDependencies ++= commandLineDeps
+  )
+  .dependsOn(core)

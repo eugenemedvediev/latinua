@@ -1,5 +1,8 @@
-import nl.medvediev.latinua.Processor
+import nl.medvediev.latinua.processor.Processor
+
 import scala.io.Source
+import scala.util.Using.Manager.Resource
+
 class ProcessorSuite extends munit.FunSuite {
   test("process anthem") {
     val expected =
@@ -98,12 +101,10 @@ class ProcessorSuite extends munit.FunSuite {
   test("get string") {
     val line = "Ще не вмерла України ні слава, ні воля, Ще нам, браття молодії, усміхнеться доля."
     val result = Processor.process(line)
-    println(result)
   }
   test("get reversed string") {
     val line = "Chytaty Enejidu online"
     val result = Processor.processReverse(line)
-    println(result)
   }
   test("get reversed Enejida") {
     val line = "Енеїда"
@@ -120,11 +121,10 @@ class ProcessorSuite extends munit.FunSuite {
 
   test("get and reverse") {
     // val text = """ """.replace("’", "'")
-    val lines = Source.fromFile("src/test/resources/Enejida.txt").getLines
+    val lines = Source.fromResource("Enejida.txt").getLines
 
     for (line <- lines if !line.startsWith("//")) {
       val processed = Processor.process(line)
-      println(processed)
       val reversed = Processor.processReverse(processed)
       assertEquals(reversed, line)
     }

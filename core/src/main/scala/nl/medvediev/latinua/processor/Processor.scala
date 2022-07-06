@@ -1,7 +1,8 @@
-package nl.medvediev.latinua
+package nl.medvediev.latinua.processor
 
 import scala.annotation.tailrec
 import scala.util.matching.Regex
+import nl.medvediev.latinua.mapper.Mapper
 
 object Processor {
 

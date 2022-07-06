@@ -1,4 +1,4 @@
-package nl.medvediev.latinua
+package nl.medvediev.latinua.mapper
 
 object Mapper {
 
