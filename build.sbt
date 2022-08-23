@@ -4,17 +4,11 @@ ThisBuild / organization := "nl.medvediev"
 ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / scalaVersion := "3.1.0"
 
-lazy val core = project
-  .in(file("core"))
-  .settings(
-    name := "core",
-    libraryDependencies ++= coreDeps
-  )
+enablePlugins(ScalaNativePlugin)
 
-lazy val console = project
-  .in(file("console"))
+lazy val root = project
+  .in(file("."))
   .settings(
-    name := "console",
-    libraryDependencies ++= commandLineDeps
+    libraryDependencies ++= commandLineDeps,
+    Compile / mainClass := Some("nl.medvediev.latinua.Main")
   )
-  .dependsOn(core)

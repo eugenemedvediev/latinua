@@ -2,7 +2,25 @@
 
 ### Usage
 
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
+#### How to test
+ - comment enablePlugins in the build.sbt
+ - sbt test
+ 
+#### How to build
+ - start
+>sbt
+sbt:root> nativeLink
+>./target/scala-3.1.0/root-out "test"
+>sudo mv ./target/scala-3.1.0/root-out /usr/bin/latin
 
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
+>sudo nvim /usr/bin/latinc
+content of latinc:
+#!/bin/bash
+
+value=$(/usr/bin/latin $@)
+echo $value | xclip -selection clipboard
+echo $value
+
+
+>sudo chmod +x /usr/bin/latinc
+
