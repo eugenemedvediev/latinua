@@ -7,10 +7,9 @@
  - sbt test
  
 #### How to build
- - start
 >sbt
-sbt:root> nativeLink
->./target/scala-3.1.0/root-out "test"
+>sbt:root> nativeLink
+>./target/scala-3.1.0/root-out "perevirochnyj tekst"
 >sudo mv ./target/scala-3.1.0/root-out /usr/bin/latin
 
 >sudo nvim /usr/bin/latinc
