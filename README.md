@@ -31,7 +31,7 @@ echo $value
 >$sudo chmod +x /usr/bin/latinc
 
 ## How to use
->$latinc "Ce zvychajnyj tekst"
+>$latinc "Ce zvychajnyj tekst"\n
 >Це звичайний текст
 
 - After successful execution you should see Ukrainian Cyrillic transliteration
