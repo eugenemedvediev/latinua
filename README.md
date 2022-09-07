@@ -6,12 +6,15 @@ Example: `Ce zvychajnyj tekst` would be transliterated to `Це звичайни
 
 ## How to build
 `$sbt`
+
 `$sbt:root> nativeLink`
 - exit sbt
 - try it out
 `$./target/scala-3.1.0/root-out "perevirochnyj tekst"`
+
 - move it to `/usr/bin`
 `$sudo mv ./target/scala-3.1.0/root-out /usr/bin/latin`
+
 - make wrapper script which automatically puts result to the system clipboard
 `$sudo nvim /usr/bin/latinc`
 
