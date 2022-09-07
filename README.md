@@ -5,9 +5,9 @@ keyboard layout to type in latin and transliterate text to Ukrainian Cyrillic.
 Example: `Ce zvychajnyj tekst` would be transliterated to `Це звичайний текст`
 
 ## How to build
-`$sbt`
+>$sbt
 
-`$sbt:root> nativeLink`
+>$sbt:root> nativeLink
 - exit sbt
 - try it out
 `$./target/scala-3.1.0/root-out "perevirochnyj tekst"`
