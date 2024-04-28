@@ -2,7 +2,7 @@ import Dependencies.*
 
 ThisBuild / organization := "nl.medvediev"
 ThisBuild / version := "0.1.0-SNAPSHOT"
-ThisBuild / scalaVersion := "3.2.1"
+ThisBuild / scalaVersion := "3.3.3"
 
 //TODO: uncomment to be able to make native binary
 // enablePlugins(ScalaNativePlugin)

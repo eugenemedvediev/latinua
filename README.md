@@ -8,10 +8,10 @@ Example: `Ce zvychajnyj tekst` would be transliterated to `Це звичайни
 >$ sbt nativeLink
 - exit sbt
 - try it out
->$ ./target/scala-3.2.1/root-out "perevirochnyj tekst"
+>$ ./target/scala-3.3.3/root "perevirochnyj tekst"
 
 - move it to `/usr/bin`
->$ sudo mv ./target/scala-3.2.1/root-out /usr/bin/latin
+>$ sudo mv ./target/scala-3.3.3/root /usr/bin/latin
 
 - make wrapper script which automatically puts result to the system clipboard
 >$ sudo vim /usr/bin/latinc
