@@ -4,6 +4,12 @@ The idea of this project is to enable people who doesn't know the Ukrainian
 keyboard layout to type in latin and transliterate text to Ukrainian Cyrillic.
 Example: `Ce zvychajnyj tekst` would be transliterated to `Це звичайний текст`
 
+## How to run / quick check using bloop
+>$ bloop run root -- "pereklady na kyrylyc'u" 
+
+## How to test using bloop
+>$ bloop test root -w -o "*ProcessorExperimentSuite" -- -z "*get reversed string experiment"
+
 ## How to build
 >$ sbt nativeLink
 - exit sbt
