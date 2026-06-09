@@ -154,7 +154,21 @@ object Processor {
 
   }
 
-  def preprocessSoftSoundReverse(line: String): String = line.replace("'", "ь")
+  def preprocessSoftSoundReverse(line: String): String = {
+    // Protect standalone apostrophes (not between letters) by temporarily replacing them
+    val placeholder = "\u0001"
+    // Use simpler patterns that work with Scala Native regex
+    // Case 1: Apostrophe at start of line
+    val afterStart = line.replaceAll("^'", placeholder)
+    // Case 2: Apostrophe after whitespace or punctuation
+    val afterNonLetter = afterStart.replaceAll("([ \t\n.,;:!?(){}]])'", "$1" + placeholder)
+    // Case 3: Apostrophe before whitespace, punctuation, or end
+    val beforeNonLetter = afterNonLetter.replaceAll("'([ \t\n.,;:!?(){}]|$)", placeholder + "$1")
+    // Convert remaining apostrophes (between letters) to soft sign
+    val withSoftSign = beforeNonLetter.replace("'", "ь")
+    // Restore standalone apostrophes
+    withSoftSign.replace(placeholder, "'")
+  }
 
   def postprocessSoftSoundReverse(line: String) = {
     def loop(candidates: List[String], acc: String): String = candidates match {

@@ -2,7 +2,7 @@ import nl.medvediev.latinua.processor.Processor
 import scala.io.Source
 
 class ProcessorExperimentSuite extends munit.FunSuite {
-  test("*get normal string experiment") {
+  test("get result string experiment") {
     val line = """
       |лінія
     """.stripMargin

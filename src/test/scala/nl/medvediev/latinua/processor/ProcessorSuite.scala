@@ -128,4 +128,47 @@ class ProcessorSuite extends munit.FunSuite {
       assertEquals(reversed, line)
     }
   }
+
+  test("preprocessSoftSoundReverse standalone opening apostrophe") {
+    val line = "'я"
+    val result = Processor.preprocessSoftSoundReverse(line)
+    assertEquals(result, "'я")  // Standalone at start is preserved
+  }
+
+  test("preprocessSoftSoundReverse standalone closing apostrophe") {
+    val line = "я'"
+    val result = Processor.preprocessSoftSoundReverse(line)
+    assertEquals(result, "я'")  // Standalone at end is preserved
+  }
+
+  test("preprocessSoftSoundReverse apostrophe between letters") {
+    val line = "п'я"
+    val result = Processor.preprocessSoftSoundReverse(line)
+    assertEquals(result, "пья")  // Apostrophe between letters becomes soft sign
+  }
+
+  test("preprocessSoftSoundReverse closing before punctuation") {
+    val line = "п'янюги,'"
+    val result = Processor.preprocessSoftSoundReverse(line)
+    // Apostrophe between letters becomes soft sign, apostrophe before punctuation is preserved
+    assertEquals(result, "пьянюги,'")
+  }
+
+  test("processReverse standalone apostrophe at end of line") {
+    // This was the original failing case from Enejida comments
+    val line = "Jaryzhnyky i vsi pjan'uhy,'"
+    val result = Processor.processReverse(line)
+    // Should NOT add extra ь at the end
+    assertEquals(result, "Ярижники і всі п'янюги,'")
+  }
+
+  test("processReverse multi-line with standalone apostrophes") {
+    // Opening quote in one line, closing in another - both should be preserved
+    val line1 = "Text with 'apost"
+    val line2 = "trophe' here"
+    val combined = s"$line1\n$line2"
+    val processed = Processor.process(combined)
+    val reversed = Processor.processReverse(processed)
+    assertEquals(reversed, combined)
+  }
 }
